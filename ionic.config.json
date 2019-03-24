@@ -1,0 +1,7 @@
+{
+    "name": "Dari",
+    "integrations": {
+        "cordova": {}
+    },
+    "type": "angular"
+}

@@ -1,0 +1,33 @@
+<div class="preview">
+    <div class="card-container">
+        <ion-card *ngIf="!!selectedWord" (click)="onImgClick(selectedWord)">
+            <div class="card-img">
+                <img src="{{selectedWord.imageAsset}}">
+            </div>
+            <ion-card-title color="dark">{{selectedWord.text}}</ion-card-title>
+        </ion-card>
+    </div>
+</div>
+<div class="segments-container">
+    <ion-segment color="secondary" scrollable="true" [value]="currentSegment">
+        <ion-segment-button color="secondary-contrast" *ngFor="let category of categoriesView" [value]="category.id"
+            (click)="onCategoryClick(category.id)">
+            <ion-icon [name]="category.icon"></ion-icon>
+            <ion-label>{{category.text}}</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+</div>
+<div class="slides-container">
+    <ion-slides [options]="slideOpts" (ionSlideDidChange)="slideChanged($event)">
+        <ion-slide *ngFor="let category of categoriesView">
+            <div class="card-container" *ngFor="let word of category.words">
+                <ion-card (click)="onImgClick(word)">
+                    <div class="card-img">
+                        <img src="{{word.imageAsset}}">
+                    </div>
+                    <ion-card-title color="dark">{{word.text}}</ion-card-title>
+                </ion-card>
+            </div>
+        </ion-slide>
+    </ion-slides>
+</div>

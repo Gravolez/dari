@@ -1,0 +1,26 @@
+<ion-list>
+    <ion-item>
+        <ion-label>Текст:</ion-label>
+        <ion-input value="text"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Категория:</ion-label>
+        <ion-select>
+            <ion-select-option *ngFor="let category of categories" [value]="category.id">{{category.text}}
+            </ion-select-option>
+        </ion-select>
+    </ion-item>
+</ion-list>
+<ion-card (click)="addImage()" class="add_image-item">
+    <ion-thumbnail>
+        <ion-icon class="add_icon--full" *ngIf="imageUrl == null" name="images"></ion-icon>
+        <ion-img *ngIf="imageUrl != null" [src]="imageUrl"></ion-img>
+    </ion-thumbnail>
+</ion-card>
+<ion-card>
+    <ion-thumbnail slot="start">
+        <ion-icon class="add_icon--full" name="megaphone"></ion-icon>
+    </ion-thumbnail>
+    <ion-label value="audioText"></ion-label>
+</ion-card>
+<ion-button color="primary" expand="block" (click)="save()">Save</ion-button>
